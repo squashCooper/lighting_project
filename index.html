@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Blocky Animal</title>
+  </head>
+
+  <style type="text/css">
+
+
+canvas{
+
+padding-left: 400px;
+padding-top: 150px;
+   
+
+
+
+}
+h3{
+  padding-left: 400px;
+  color: purple;
+}
+h4{
+  padding-left: 400px; 
+  color: purple;
+}
+#normal_on{
+
+  margin-left: 400px; 
+background-color: purple;
+color: white;
+font-size: 20px;
+}
+#normal_off{
+
+
+background-color: purple;
+color: white;
+font-size: 20px;
+}
+#light_on{
+  margin-top: 5px; 
+margin-left: 400px; 
+
+background-color: purple;
+color: white;
+font-size: 20px;
+}
+#light_off{
+
+margin-left: 0px;
+background-color: purple;
+color: white;
+font-size: 20px;
+}
+#animate_on{
+margin-left: 400px; 
+background-color: purple;
+color: white;
+font-size: 20px;
+}
+#animate_off{
+
+margin-top: 5px; 
+background-color: purple;
+color: white;
+font-size: 20px;
+}
+
+
+#spotlight_on{
+
+margin-top: 5px; 
+margin-left: 400px; 
+background-color: purple;
+color: white;
+font-size: 20px;
+}
+
+#spotlight_off{
+
+background-color: purple;
+color: white;
+font-size: 20px;
+}
+#numbd{
+  padding-left: 400px;
+  color: purple;
+}
+
+#lightstatus{
+  padding-left: 400px;
+  color: purple;
+}
+#camera_slide{
+  margin-left: 400px; 
+  margin-top: 10px; 
+}
+
+#red_slide{
+  margin-top: 10px; 
+  margin-left: 400px; 
+
+}
+#x_slide{
+ 
+  margin-left: 400px; 
+  margin-top: 20px;
+}
+
+h2{
+
+  margin-left: 400px; 
+  color: purple; 
+}
+  </style>
+
+  <body onload="main()">
+    <body style="background-color:rgb(249, 160, 255);"></body>
+    <canvas id="webgl" width="600" height="600">
+    Please use a browser that supports "canvas"
+    </canvas>
+    
+    <form>
+      <div id="numbd"></div>
+
+      <div id = "lightstatus"></div>
+   
+ 
+      <h2>Turn animation off to use X-axis slider and turn off spotlight for 
+        main light's specular lighting
+      </h2>
+      <h2>WASDQE controls work</h2>
+      <h3>Use up, down, right, left arrows to move dino</h3>
+
+<div>
+<button type = "button" id = "normal_on">Normal On</button>
+
+<button type = "button" id = "normal_off">Normal Off</button>
+</div>
+
+
+<div>
+  <button type = "button" id = "light_on">Light On</button>
+
+  
+  <button type = "button" id = "light_off">Light Off</button>
+  </div>
+  <div>
+  
+    <button type = "button" id = "spotlight_on">Spotlight On</button>
+  
+    <button type = "button" id = "spotlight_off">Spotlight Off</button>
+    </div>
+
+  <div>
+
+    <button type = "button" id = "animate_on" name = "animate_off">Turn Animation On</button>
+    <button type = "button" id = "animate_off" name = "animate_off">Turn Animation Off</button>
+
+  </div>
+  <div>
+    <input type="range" id="camera_slide" name="camera_slide" min="0" max="360" value="0" step="10" />
+    <label for="camera_slide">Camera Angle</label>
+  </div>
+  <div>
+    <input type="range" id="red_slide" name="red_slide" min="0" max="255" value="0" step="5" />
+    <label for="red_slide">Red Light</label>
+  
+    <input type="range" id="green_slide" name="green_slide" min="0" max="255" value="0" step="5" />
+    <label for="green_slide">Green Light</label>
+ 
+    <input type="range" id="blue_slide" name="bluw_slide" min="0" max="255" value="0" step="5" />
+    <label for="blue_slide">Blue Light</label>
+  </div>
+<div>
+  <input type="range" id="x_slide" name="x_slide" min="-500" max="800" value="0" step="5" />
+  <label for="x_slide">X</label>
+
+
+  <input type="range" id="y_slide" name="y_slide" min="-100" max="800" value="0" step="5" />
+  <label for="y_slide">Y</label>
+
+  <input type="range" id="z_slide" name="z_slide" min="-700" max="600" value="0" step="5" />
+  <label for="z_slide">Z</label>
+</div>
+
+
+
+
+
+
+
+
+
+
+   
+      
+    </form> 
+    <script src="lib/webgl-utils.js"></script>
+    <script src="lib/webgl-debug.js"></script>
+    <script src="lib/cuon-utils.js"></script>
+    <script src = "lib/cuon-matrix-cse160.js"></script>
+    <script src ="blocky_world.js"></script>
+    <script src = "camera.js"></script>
+    <script src = "triangle.js"></script>
+
+    <script src = "Cube.js"></script>
+    
+    <script src = "Sphere.js"></script>
+
+    <script src = "Cylinder.js"></script>
+   <script src = "Pyramid.js"></script>
+    
+    
+    
+    
+  </body>
+</html>
