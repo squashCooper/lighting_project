@@ -56,9 +56,9 @@ var FSHADER_SOURCE =`
   uniform bool u_spotLight; 
   uniform int u_shiny; 
   
-  uniform int u_red;
-  uniform int u_green;
-  uniform int u_blue;
+  uniform float u_red;
+  uniform float u_green;
+  uniform float u_blue;
    
 
  
@@ -146,20 +146,15 @@ vec3 specular2 = vec3(1.0, 1.0, 1.0) * spec2 * spotIntensity;
 
 vec3 ambient = vec3(gl_FragColor) * 0.3; 
  
-vec4 specColor = spec2 * vec4(float(u_red), float(u_green), float(u_blue),1.0);
+vec4 specColor = spec2 * vec4(u_red, u_green, u_blue,1.0);
 
  if(spotCosAngle > spotCutOff && u_spotLight) {
     
     spotIntensity = spotCosAngle;
 
-if(u_spotLight && !(u_lightOn) && u_shiny == 0){
-  
-  gl_FragColor = vec4(specular2 + diffuse2 + ambient, 1.0);
-}
-
  if(u_spotLight && u_lightOn && u_shiny == 0){
 
-  gl_FragColor = vec4(spec + spec2 +  diffuse + diffuse2 + ambient, 1.0) * vec4(float(u_red), float(u_green), float(u_blue),1.0);
+  gl_FragColor = vec4(spec + spec2 +  diffuse + diffuse2 + ambient, 1.0) * vec4(u_red,u_green, u_blue,1.0);
 
 }
 
@@ -169,11 +164,11 @@ gl_FragColor = vec4(specular2 + diffuse2 + ambient, 1.0);
 }
 }
 else if(!(u_spotLight) && u_lightOn && u_shiny == 0){
-  gl_FragColor = vec4(spec + diffuse + ambient, 1.0)  * vec4(float(u_red), float(u_green), float(u_blue),1.0);
+  gl_FragColor = vec4(spec + diffuse + ambient, 1.0)  * vec4(u_red, u_green, u_blue,1.0);
 }
 
 else if(!u_spotLight && u_lightOn && u_shiny == 1){
-gl_FragColor = vec4(diffuse + ambient, 1.0)  * vec4(float(u_red), float(u_green), float(u_blue),1.0);
+gl_FragColor = vec4(diffuse + ambient, 1.0)  * vec4(u_red, u_green, u_blue,1.0);
 
 }
 else{
@@ -679,28 +674,13 @@ gl.uniform3f(u_cameraPos, camera.eye.elements[0], camera.eye.elements[1], camera
 gl.uniform1i(u_lightOn, g_lightOn);
 
 gl.uniform1i(u_spotLight, g_spotLight);
-gl.uniform1i(u_red, g_color[0]);
-gl.uniform1i(u_green, g_color[1]);
-gl.uniform1i(u_blue, g_color[2]);
+gl.uniform1f(u_red, g_color[0]);
+gl.uniform1f(u_green, g_color[1]);
+gl.uniform1f(u_blue, g_color[2]);
 
 
 
 
-// var ball = new Sphere();
-
-// if(g_normalOn == true){
-// //   console.log("normal is true"); 
-  
-//    ball.textureNumber = -3;
-//  }
-//  if(g_normalOn == false){
-//    ball.textureNumber = -2; 
-//    }
-
-
-// ball.matrix.scale(1,1,1);
-// ball.matrix.translate(-1.8, 0.5, -0.7);
-// ball.render(); 
 
 var ball =  new Sphere();
 //ball.color = [0.0,0.0,0.0,1.0];
@@ -1185,12 +1165,12 @@ document.getElementById("x_slide").addEventListener('mousemove', function(ev){if
 document.getElementById("y_slide").addEventListener('mousemove', function(ev){if(ev.buttons == 1){g_lightPos[1] = this.value/100; renderAllShapes();}});
 
 document.getElementById("z_slide").addEventListener('mousemove', function(ev){if(ev.buttons == 1){g_lightPos[2] = this.value/100; renderAllShapes();}});
-document.getElementById("red_slide").addEventListener('mousemove', function(ev){if(ev.buttons == 1){g_color[0] = this.value/255; renderAllShapes();}});
+document.getElementById("red_slide").addEventListener('mousemove', function(ev){if(ev.buttons == 1){g_color[0] = this.value; renderAllShapes();}});
 
 
-document.getElementById("green_slide").addEventListener('mousemove', function(ev){if(ev.buttons == 1){g_color[1] = this.value/255; renderAllShapes();}});
+document.getElementById("green_slide").addEventListener('mousemove', function(ev){if(ev.buttons == 1){g_color[1] = this.value; renderAllShapes();}});
 
-document.getElementById("blue_slide").addEventListener('mousemove', function(ev){if(ev.buttons == 1){g_color[2] = this.value/255; renderAllShapes();}});
+document.getElementById("blue_slide").addEventListener('mousemove', function(ev){if(ev.buttons == 1){g_color[2] = this.value; renderAllShapes();}});
 //document.getElementById("button").onclick = function(){g_found = 1;};
 
 
